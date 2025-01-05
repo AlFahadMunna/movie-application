@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = ({ data }) => {
   console.log(data);
   return (
@@ -10,12 +12,25 @@ const Header = ({ data }) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-full h-[50vh] flex flex-col justify-end p-[10%]"
+      className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%]"
     >
-      <h1 className="text-5xl font-black text-white">
+      <h1 className="w-[70%] text-5xl font-black text-white">
         {" "}
         {data.name || data.title || data.original_name || data.original_title}
       </h1>
+      <p className="w-[70%] mt-3 text-white">
+        {data.overview.slice(0, 200)}...
+        <Link className="text-blue-500">more</Link>
+      </p>
+      <p className="text-white">
+        <i className="text-yellow-500 ri-megaphone-fill"></i>
+        {data.release_date || "No Information"}
+        <i className="ml-5 text-yellow-500 ri-album-fill"></i>
+        {data.media_type.toUpperCase()}
+      </p>
+      <Link className="text-white p-4 rounded mt-5 bg-[#6556cd]">
+        Watch Trailer
+      </Link>
     </div>
   );
 };
